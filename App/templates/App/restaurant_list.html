@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>My First Webpage</title>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  {% block content %}
+  <div class="row"> 
+    {% for item in restaurant_list %}
+    <div class="col-4"> 
+      <div style="margin: 7px 7px" class="card">
+            <h3 class="card-header"> {{item.name}}</h3>
+        <div class="card-body">
+          <h5 class="card-title"><img src="https://cdn-icons-png.flaticon.com/512/535/535239.png" alt="Logo" width="18" height="23" class="d-inline-block align-text-top">
+              {{item.location}}</h5>
+          <p class="card-text"></p>
+          <a href="{% url 'restaurant-detail' item.id %}" class="btn btn-primary">More info...</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+  {% endblock %}
+</body>
+</html>
